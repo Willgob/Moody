@@ -1,6 +1,8 @@
 <script lang="ts">
     import {onMount} from 'svelte';
     import Chart from 'chart.js/auto';
+    import {goto} from '$app/navigation'
+    import { resolve}  from '$app/paths';
 
     const test = [
         {id: 1, date: '2026-11-11', mood: 6},
@@ -32,7 +34,7 @@
                 onClick: (_event, elements) => {
                     if (elements.length) {
                         const entry = test[elements[0].index];
-                        clicked = `Bleh bleh ${entry.id}`
+                        goto(`/journal/${entry.date}`)
                     }
                 },
                 onHover: (event, elements) => {
